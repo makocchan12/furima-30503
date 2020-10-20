@@ -19,12 +19,6 @@
 - has_many :items
 - has_many :purchases
 
-## images テーブル
-| Column             | Type       | Options    |
-| ------------------ | ---------- | ---------- |
-| image | text       | null: false             |
-| item  | references | null: false,foreign_key |
-
 
 ## items テーブル
 | Column                   | Type       | Options                       |
@@ -77,4 +71,4 @@
 ### Association
 
 - belongs_to_active_hash :prefecture
-- belongs_to :item_purchase
+- belongs_to :purchase
