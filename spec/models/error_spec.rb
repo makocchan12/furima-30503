@@ -4,11 +4,10 @@ RSpec.describe User, type: :model do
     @user = FactoryBot.build(:user)
   end
   describe 'ユーザー新規登録' do
-    it '重複したemailが存在する場合登録できない' do
-      @user.save
-      another_user = FactoryBot.build(:user)
-      another_user.email = @user.email
-      another_user.valid?
+    it 'passwordは、半角数字のみでは登録できない' do
+      @user.password = "000000"
+      @user.password_confirmation = "000000"
+      @user.valid?
       binding.pry
     end
   end
