@@ -6,9 +6,10 @@ RSpec.describe Item, type: :model do
   end
   describe '商品の出品登録' do
     context '商品の出品ができないとき' do
-      it '価格は半角数字のみ保存可能' do
-        @item.price = '５００'
+      it 'カテゴリーがother_than: 1 だった場合出品できない' do
+        @item.category_id = 1
         @item.valid?
+        binding.pry
       end
     end
   end
