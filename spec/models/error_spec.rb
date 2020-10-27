@@ -1,36 +1,15 @@
 require 'rails_helper'
-RSpec.describe User, type: :model do
+RSpec.describe Item, type: :model do
   before do
-    @user = FactoryBot.build(:user)
+    @item = FactoryBot.build(:item)
+    @item.image = fixture_file_upload('public/images/test_image.jpg')
   end
-  describe 'ユーザー新規登録' do
-    it 'passwordは、半角数字のみでは登録できない' do
-      @user.password = "000000"
-      @user.password_confirmation = "000000"
-      @user.valid?
-      binding.pry
+  describe '商品の出品登録' do
+    context '商品の出品ができないとき' do
+      it '価格は半角数字のみ保存可能' do
+        @item.price = '５００'
+        @item.valid?
+      end
     end
   end
 end
-
-# def array123(nums)
-#   if nums.include?(1) && nums.include?(2) && nums.include?(3)
-#     puts "True"
-#   else
-#     puts "False"
-#   end
-# end
-
-#   def array123(nums)
-#     if nums.include?(1&&2&&3) 
-#       puts "True"
-#     else
-#       puts "False"
-#     end
-#   end
-#   array123([1, 1, 2, 3, 1])
-#   array123([1, 1, 2, 4, 1])
-#   array123([1, 1, 2, 1, 2, 3])
-#   array123([1, 1, 4, 1, 5, 3])
-#   array123([1, 1, 4, 1, 5, 2])
-
