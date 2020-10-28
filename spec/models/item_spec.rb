@@ -35,7 +35,7 @@ RSpec.describe Item, type: :model do
       it 'カテゴリーがid: 1 だった場合出品できない' do
         @item.category_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category must be other than 1")
+        expect(@item.errors.full_messages).to include('Category must be other than 1')
       end
       it '商品の状態がないと出品できない' do
         @item.condition_id = nil
@@ -45,7 +45,7 @@ RSpec.describe Item, type: :model do
       it '商品の状態がid: 1 だった場合出品できない' do
         @item.condition_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Condition must be other than 1")
+        expect(@item.errors.full_messages).to include('Condition must be other than 1')
       end
       it '配送料の負担がないと出品できない' do
         @item.shipping_charge_payer_id = nil
@@ -55,7 +55,7 @@ RSpec.describe Item, type: :model do
       it '配送料がid: 1 だった場合出品できない' do
         @item.shipping_charge_payer_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipping charge payer must be other than 1")
+        expect(@item.errors.full_messages).to include('Shipping charge payer must be other than 1')
       end
       it '配送元の地域がないと出品できない' do
         @item.prefecture_id = nil
@@ -65,7 +65,7 @@ RSpec.describe Item, type: :model do
       it '配送元がid: 1 だった場合出品できない' do
         @item.prefecture_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Prefecture must be other than 1")
+        expect(@item.errors.full_messages).to include('Prefecture must be other than 1')
       end
       it '発送までの日数がないと出品できない' do
         @item.day_required_id = nil
@@ -75,7 +75,7 @@ RSpec.describe Item, type: :model do
       it '発送までの日数がid: 1 だった場合出品できない' do
         @item.day_required_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Day required must be other than 1")
+        expect(@item.errors.full_messages).to include('Day required must be other than 1')
       end
       it '価格がないと出品できない' do
         @item.price = nil
