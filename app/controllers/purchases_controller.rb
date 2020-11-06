@@ -1,4 +1,5 @@
 class PurchasesController < ApplicationController
+  before_action :basic_auth
   before_action :authenticate_user!, only: :index
   before_action :set_item,only: [:index,:create]
 
@@ -19,6 +20,12 @@ class PurchasesController < ApplicationController
   end
 
   private
+
+  def basic_auth
+    authenticate_or_request_with_http_basic do |username, password|
+      username == ENV["BASIC_AUTH_USER"] && password == ENV["BASIC_AUTH_PASSWORD"]
+    end
+  end
 
   def purchase_params
     params.require(:purchase_address).permit(:post_code, :prefecture_id, :city, :address, :building_name, :phone_number, :purchase_id).merge(user_id: current_user.id,token: params[:token],item_id: params[:item_id])

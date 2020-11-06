@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :basic_auth
   before_action :set_item,           only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :edit]
   before_action :move_to_index,      except: [:index, :show]
@@ -42,6 +43,12 @@ class ItemsController < ApplicationController
   end
 
   private
+
+  def basic_auth
+    authenticate_or_request_with_http_basic do |username, password|
+      username == ENV["BASIC_AUTH_USER"] && password == ENV["BASIC_AUTH_PASSWORD"]
+    end
+  end
 
   def item_params
     params.require(:item).permit(
