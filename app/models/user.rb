@@ -17,4 +17,5 @@ class User < ApplicationRecord
   end
   validates :password, format: { with: /([0-9].*[a-zA-Z]|[a-zA-Z].*[0-9])/ }
   has_many :items
+  has_many :purchases
 end

@@ -1,15 +1,12 @@
 require 'rails_helper'
-RSpec.describe Item, type: :model do
+RSpec.describe PurchaseAddress, type: :model do
   before do
-    @item = FactoryBot.build(:item)
-    @item.image = fixture_file_upload('public/images/test_image.jpg')
+    @purchase_address = FactoryBot.build(:purchase_address)
   end
-  describe '商品の出品登録' do
-    context '商品の出品ができないとき' do
-      it 'カテゴリーがother_than: 1 だった場合出品できない' do
-        @item.category_id = 1
-        @item.valid?
-        binding.pry
+  describe '購入情報の保存' do
+    context '情報の保存ができないとき' do
+      it '電話番号はハイフン不要で11桁以内であること' do
+        
       end
     end
   end
