@@ -4,10 +4,11 @@
 // that code so it'll be compiled.
 
 require("@rails/ujs").start()
-require("turbolinks").start()
+// require("turbolinks").start() turbolinksというデフォルト機能を削除し、jsの送信フォームを読み込ませるために削除する
 require("@rails/activestorage").start()
 require("channels")
 require("../items")
+require("../card")
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference

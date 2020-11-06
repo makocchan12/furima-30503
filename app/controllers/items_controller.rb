@@ -25,6 +25,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    redirect_to root_path if @item.purchase.present?
   end
 
   def update
@@ -43,7 +44,9 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:image, :name, :description, :category_id, :condition_id, :shipping_charge_payer_id, :prefecture_id, :day_required_id, :price).merge(user_id: current_user.id)
+    params.require(:item).permit(
+      :image, :name, :description, :category_id, :condition_id, :shipping_charge_payer_id, :prefecture_id, :day_required_id, :price
+    ).merge(user_id: current_user.id)
   end
 
   def move_to_index
